@@ -1,0 +1,44 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title }}</title>
+    <description>Updates from {{ site.title }}</description>
+    <link>{{ site.baseurl | prepend: site.url }}</link>
+    {% for post in site.posts %}
+      {% unless post.draft %}
+        <item>
+          <title>{{ post.title | xml_escape }}</title>
+          <description>{{ post.content | xml_escape }}</description>
+          <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
+          <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
+          <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
+        </item>
+      {% endunless %}
+    {% endfor %}
+    {% for project in site.projects %}
+      {% unless project.draft %}
+        <item>
+          <title>{{ project.title | xml_escape }}</title>
+          <description>{{ project.content | xml_escape }}</description>
+          <pubDate>{{ project.date | date_to_xmlschema }}</pubDate>
+          <link>{{ project.url | prepend: site.baseurl | prepend: site.url }}</link>
+          <guid isPermaLink="true">{{ project.url | prepend: site.baseurl | prepend: site.url }}</guid>
+        </item>
+      {% endunless %}
+    {% endfor %}
+    {% for publication in site.publications %}
+      {% unless publication.draft %}
+        <item>
+          <title>{{ publication.title | xml_escape }}</title>
+          <description>{{ publication.content | xml_escape }}</description>
+          <pubDate>{{ publication.date | date_to_xmlschema }}</pubDate>
+          <link>{{ publication.url | prepend: site.baseurl | prepend: site.url }}</link>
+          <guid isPermaLink="true">{{ publication.url | prepend: site.baseurl | prepend: site.url }}</guid>
+        </item>
+      {% endunless %}
+    {% endfor %}
+  </channel>
+</rss>

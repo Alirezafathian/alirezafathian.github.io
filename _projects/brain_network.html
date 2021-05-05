@@ -1,0 +1,58 @@
+---
+title: Classification of Alzheimer’s disease, mild cognitive impairment, and cognitively normal patients based on the rs-fMRI data
+type: projects
+date: 2020-01-01
+imageurl: /ref/projects/brain_network/brain_network.png
+authors: Alireza Fathian
+---
+
+<html>
+<head>
+<style>
+.left {
+  text-align: left;
+  border: 3px solid blue;
+}
+</style>
+</head>
+<body>
+
+<div class="left">
+
+<div align="right"><a href="https://github.com/Alirezafathian/fmriprediction" target="_blank">[Source Code]</a></div>
+<b>Classification of Alzheimer’s disease, mild cognitive impairment, and cognitively normal patients based on the rs-fMRI data</b><br>
+<br><br>
+In this study, we are exploring the effects of Alzheimer’s disease (AD), early mild cognitive impairment (EMCI), and late mild cognitive impairment (LMCI) on functional brain connectivity. We are developing a machine learning model that enables us to classify patients with these disorders. Our goal is to develop a reliable method for diagnosing Alzheimer's disease based on fMRI data.<br>
+<br>
+<b>Data</b><br>
+The rs-fMRI and T1w images of 96 subjects (24 subjects for each group of AD, EMCI, LMCI, and CN ) from <a href="http://adni.loni.usc.edu/" target="_blank">ADNI database</a> are analyzing in this study.<br>
+<br>
+<b>Methods</b><br>
+We are developing a general tool to perform classification and also network analysis on any given dataset including rs-fMRI and T1w images of subjects that we want to classify.
+The general pipeline of this study is shown in the figure below.
+<div class="mobileHide">
+<iframe src="/ref/projects/brain_network/pipeline/pipeline_with_links.html" style="width:100%; height:1000px;" scrolling="yes" seamless></iframe>
+</div>
+<div class="mobileShow">
+<img src="/ref/projects/brain_network/pipeline/pipeline.png" alt="pipeline">
+</div>
+
+<b>Results</b><br>
+Some of the results that we have obtainded so far are presented here<br>
+<br><br>
+Mean network of different groups of subjects<br>
+<br>
+Click here for 3D view: 
+<select name="3D View" onchange="window.open(this.options[this.selectedIndex].value);">
+	<option value="https://alirezafathian.xyz/ref/projects/brain_network/mean_networks/all.html">--</option> 
+	<option value="https://alirezafathian.xyz/ref/projects/brain_network/mean_networks/cn.html">CN</option> 
+	<option value="https://alirezafathian.xyz/ref/projects/brain_network/mean_networks/emci.html">EMCI</option>
+	<option value="https://alirezafathian.xyz/ref/projects/brain_network/mean_networks/lmci.html">LMCI</option> 
+	<option value="https://alirezafathian.xyz/ref/projects/brain_network/mean_networks/ad.html">AD</option> 
+	<option value="https://alirezafathian.xyz/ref/projects/brain_network/mean_networks/all.html">All</option> 
+</select>
+ 
+<img src="/ref/projects/brain_network/mean_net_vertical.png" alt="mean_net_vertical">
+</div>
+</body>
+</html>
