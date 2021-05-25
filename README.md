@@ -1,4 +1,4 @@
 My Website
 =========================
 
-<a href="https://alirezafathian.xyz/">alirezafathian.xyz</a>
+<a href="https://fathian.xyz/">fathian.xyz</a>
