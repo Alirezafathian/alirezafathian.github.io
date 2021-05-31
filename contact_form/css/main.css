@@ -60,7 +60,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-	color: #57b846;
+	color: #dcdcdc;
 }
 
 /*---------------------------------------------*/
@@ -223,7 +223,7 @@ textarea.input1 + .shadow-input1 {
 .input1 {
   display: block;
   width: 100%;
-  background: #e6e6e6;
+  background: #dcdcdc;
   font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.5;
@@ -277,7 +277,7 @@ textarea.input1 + .shadow-input1 {
   min-width: 193px;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background: #dcdcdc;
   font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.5;
@@ -413,7 +413,7 @@ textarea.input1 + .shadow-input1 {
   font-family: FontAwesome;
   display: block;
   position: absolute;
-  color: #c80000;
+  color: #666666;
   font-size: 15px;
   top: 50%;
   -webkit-transform: translateY(-50%);
