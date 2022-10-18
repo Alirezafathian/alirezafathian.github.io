@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Research Report</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/solarized.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!-- TOC-Progress plugin -->
+		<!-- <link rel="stylesheet" href="plugin/toc-progress/toc-progress.css"> -->
+
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<style>
+			p.small {
+				line-height: 0.3;
+			}
+			h1.hidden {
+			  visibility: hidden;
+			}
+		</style>
+		
+		<style>
+
+		.img-link{
+		   text-decoration: none !important;
+		   border:0px !important;
+		   outline:none;
+		   border-width: 0px;
+		   outline-width:0px;
+		   border-bottom: none;
+		}
+		* {
+		  box-sizing: border-box;
+		}
+
+		/* Create two equal columns that floats next to each other */
+		.column0 {
+		  float: left;
+		  width: 130px;
+		  padding: 10px;
+		  /* height: 250px; Should be removed. Only for demonstration */
+		}
+		.column1 {
+		  float: left;
+		  width: 110px;
+		  padding: 10px;
+		  /* height: 250px; Should be removed. Only for demonstration */
+		}
+
+		.column2 {
+		  float: left;
+		  width: 500px;
+		  padding: 10px;
+		  /* height: 250px; /* Should be removed. Only for demonstration */
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+
+		.image-container {
+		  position: relative;
+		  text-align: center;
+		  width: 100%;
+		}
+		.image-container img {
+		  filter: brightness(50%);
+		  filter: grayscale(100%);
+		  width: 100%;
+		}
+		.image-container img:hover {
+		  filter: brightness(150%);
+		  border: 3px solid #B82648;
+		  background-color: lightblue;
+		}
+		</style>
+		
+		
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<!--===================================0============================================-->
+				<section data-state="no-toc-progress" data-menu-title="Genetic Association Study of grey matter network dysfunction in Alzheimer's disease Continuum">
+					<img src="ref/img/first.png" alt="HI" style="height: 400px; margin: 0 auto 4rem auto; background: transparent;">
+					<h3 class= no-toc-progressi>Genetic Association Study of grey matter network dysfunction in Alzheimer's disease Continuum</h3>
+					<small>Alireza Fathian | 
+					<a href="mailto:fathian2009@gmail.com" style="text-decoration: none" target="_blank"><i class="fas fa-envelope"></i></a>
+					<a href="https://alirezafathian.github.io" target="_blank"><i class="fas fa-globe"></i></a>
+					<br><br><small>November, 2021</small>
+					</small>
+
+				</section>
+<!--===================================1============================================-->
+				<section  style="text-align: left;" data-menu-title="1. Research Questions">
+                		<h2>1. Research Questions</h2>
+                		<section data-menu-title="1. Research Questions">
+				</section><section>
+				<br>
+					<img src="ref/img/trend.png" alt="HI" style="width: 100%; margin: 0 auto 4rem auto; background: transparent;">
+				</section>
+				<section data-menu-title="1. Research Questions">
+					<ul>
+						<li>How are these factors correlated?</li><br>
+						<li>How can we design an effective analysis pipeline for characterizing AD that capture both neuroimaging and genetic data? </li><br>
+						<li>How can these methods help us understanding the disease mechanism?</li>
+					</ul>  
+				</section>
+            			</section>
+<!--===================================2============================================-->
+				<section style="text-align: left;" data-menu-title="2. Methodology">
+					<h2>2. Methodology</h2>
+					<section style="text-align: left;" data-menu-title="2. Methodology"></section>
+<!--===================================2.1============================================-->
+					<section style="text-align: left;" data-menu-title="2.1. Brain Connectivity Networks">
+						<h3>2.1. Brain Connectivity Networks</h3>
+						<!--<section style="text-align: left;" data-menu-title="2.1. Subjects"></section>-->
+						<h4>Modeling brain connectivity networks<h4> 
+<div class="row" align="center">
+
+  <div class="column1" align="left" style="width: 300px;">
+						<div class="image-container">
+						<img src="ref/img/structural.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>
+  <div class="column1" align="left" style="width: 300px;">
+						<div class="image-container">
+						<img src="ref/img/functional.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>
+  <div class="column1" align="left" style="width: 300px;">
+						<div class="image-container">
+						<img src="ref/img/effective.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>
+
+</div>
+					</section>
+					
+					<section style="text-align: left;" data-menu-title="2.1. Brain Connectivity Networks">
+						<h3>2.1. Brain Connectivity Networks</h3>
+						<!--<section style="text-align: left;" data-menu-title="2.1. Subjects"></section>-->
+						<h4>Example: Modeling functional connectivity network using fMRI and t1w<h4> 
+<div class="row" align="center">
+
+  <div class="column1" align="left" style="width: 300px;">
+						<div class="image-container">
+						<img src="ref/img/prep.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>
+  <div class="column1" align="left" style="width: 300px;">
+						<div class="image-container">
+						<img src="ref/img/parc.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>
+  <div class="column1" align="left" style="width: 300px;">
+						<div class="image-container">
+						<img src="ref/img/corr.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>
+
+</div>
+					</section>
+					<section style="text-align: left;" data-menu-title="2.1. Brain Connectivity Networks">
+						<h3>2.1. Brain Connectivity Networks</h3>
+						<!--<section style="text-align: left;" data-menu-title="2.1. Subjects"></section>-->
+						<h4>The trend of brain network disruptions<h4>
+						<div class="row" align="center">
+
+  <div class="column1" align="left" style="width: 72%;">
+						<br>
+						<img src="ref/img/wats.png" alt="intro.png" style="width: 100%;">
+						</div>
+  <div class="column1" align="left" style="width: 3%;">
+						<img src="ref/img/sep.png" alt="intro.png" style="height: 300px;">
+						</div>
+  <div class="column1" align="left" style="width: 25%;">
+
+						<img src="ref/img/gif.gif" alt="intro.png" style="width: 100%;">
+						</div>
+
+</div>
+					</section>
+<!--===================================2.2============================================-->
+					<section style="text-align: left;" data-menu-title="2.2 genome-wide association study (GWAS)">
+						<h3>2.2 Genome-Wide Association Study (GWAS)</h3>
+						<p>GWAS analysis can be used to detect associations between genetic variants and AD.</p>
+					<img src="ref/img/manhat1.png" alt="fmriprep.png" style="width: 100%; margin-left: 10px; background: transparent;">
+
+					</section>
+<!--===================================2.3============================================-->
+					<section style="text-align: left;" data-menu-title="2.3. Denoising">
+						<h3>2.3. Combining Neuroimaging and Genetic Data</h3>
+						<ul  style="padding-left: 50px;">
+							<li>First Approach</li>
+							<img src="ref/img/approach1.png" alt="fmriprep.png" style="width: 100%; margin-left: 10px; background: transparent;">
+							<li>Second Approach</li>
+							<img src="ref/img/approach2.png" alt="fmriprep.png" style="width: 100%; margin-left: 10px; background: transparent;">
+						</ul>
+						<br>
+					</section>
+<!--===================================2.4============================================-->
+				</section>
+<!--===================================3============================================-->		
+				<section style="text-align: left;" data-menu-title="3. Fictive Results and Conclusion">
+					<h2>3. Fictive Results and Conclusion</h2>
+					<section style="text-align: left;" data-menu-title="3. Fictive Results and Conclusion"></section>
+<!--===================================3.1============================================-->
+					<section style="text-align: left;" data-menu-title="3.1. Fictive Results of the First Approach">
+						<h3>3.1. Fictive Results of the First Approach</h3>
+						Network alteration in AD Progression:
+						<img src="ref/img/global.png" alt="mean-mean.png" style="width: 100%">
+						Clustering Coefficient, Average Shortest Path Length, and Assortativity are higly involved.
+						</section>
+						<section style="text-align: left;" data-menu-title="3.1. Fictive Results of the First Approach">
+						<h3>3.1. Fictive Results of the First Approach</h3>
+						GWAS analysis of connectivity metrics:
+						<img src="ref/img/manclus.png" alt="mean-mean.png" style="width: 100%">
+					</section>
+					
+					<section style="text-align: left;" data-menu-title="3.1. Fictive Results of the First Approach">
+						<h3>3.1. Fictive Results of the First Approach</h3>
+						Signifcant associations between SNPs and network metrics.<br>
+						<img src="ref/img/genes.png" alt="mean-mean.png" style="width: 60%">
+					</section>					
+					<section>
+					<h3>3.1. Fictive Results of the First Approach</h3>
+						The pathway of significant genes:
+						<img src="ref/img/pathw.png" alt="mean-mean.png" style="width: 100%">
+					</section>
+<!--===================================3.2============================================-->
+					<section style="text-align: left;" data-menu-title="3.2 Analyzing Measures: Mean and SD">
+						<h3>3.2 Summery of Pipeline</h3>
+<div class="row" align="center">
+
+  <div class="column1" align="left" style="width: 25%;">
+
+						<img src="ref/img/fin1.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div>
+  <div class="column1" align="left" style="width: 25%;">
+						<div class="image-container">
+						<img src="ref/img/fin2.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>
+  <div class="column1" align="left" style="width: 25%;">
+						<div class="image-container">
+						<img src="ref/img/fin3.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>  
+  <div class="column1" align="left" style="width: 25%;">
+						<div class="image-container">
+						<img src="ref/img/fin4.png" alt="intro.png" style="width=device-width; margin-left: 10px;float:right; background: transparent;">
+						</div></div>
+
+</div>
+					</section>
+
+<!--===================================3.3============================================-->
+</section>
+<!--===================================3.14============================================-->
+				<section style="text-align: left;">
+					<h1>Thank You!</h1>
+				</section>
+<!--===================================3.14============================================-->
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="bower_components/reveal.js-menu/menu.js"></script>
+		<script>
+			
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'convex',
+				slideNumber: 'c/t',
+				//width: 960,
+				height: 800,
+				navigationMode: 'linear',
+				controlsBackArrows: 'visible',
+				controlsLayout: 'edges',
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealMath ],
+			        dependencies: [
+
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+					// TOC-Progress plugin
+					//{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
+				],
+				math: {
+				      mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				      config: 'TeX-AMS_HTML-full',
+				      // pass other options into `MathJax.Hub.Config()`
+				      TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+				menu: {
+					side: 'left',
+					numbers: false,
+					titleSelector: 'h1, h2, h3, h4, h5, h6',
+					hideMissingTitles: false,
+					markers: false,
+					custom: false,
+					themes: [
+					    { name: 'Black', theme: 'dist/theme/black.css' },
+					    { name: 'White', theme: 'dist/theme/white.css' },
+					    { name: 'League', theme: 'dist/theme/league.css' },
+					    { name: 'Sky', theme: 'dist/theme/sky.css' },
+					    { name: 'Beige', theme: 'dist/theme/beige.css' },
+					    { name: 'Simple', theme: 'dist/theme/simple.css' },
+					    { name: 'Serif', theme: 'dist/theme/serif.css' },
+					    { name: 'Blood', theme: 'dist/theme/blood.css' },
+					    { name: 'Night', theme: 'dist/theme/night.css' },
+					    { name: 'Moon', theme: 'dist/theme/moon.css' },
+					    { name: 'Solarized', theme: 'dist/theme/solarized.css' }
+					],
+					transitions: true,
+					openButton: true,
+					openSlideNumber: true,
+					keyboard: true
+				}
+
+	
+			});
+		</script>
+	<script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script></body>
+</html>

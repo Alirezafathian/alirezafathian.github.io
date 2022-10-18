@@ -1,0 +1,749 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Research Report</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/solarized.css" id="theme">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!-- TOC-Progress plugin -->
+		<!-- <link rel="stylesheet" href="plugin/toc-progress/toc-progress.css"> -->
+
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<style>
+			p.small {
+				line-height: 0.3;
+			}
+			h1.hidden {
+			  visibility: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<!--===================================0============================================-->
+				<section data-state="no-toc-progress" data-menu-title="Complex Network Analysis of MCI and AD Patients">
+					<img src="ref/img/solarized/first.png" alt="HI" style="height: 210px; margin: 0 auto 4rem auto; background: transparent;">
+					<h3 class= no-toc-progress>Complex Network Analysis of MCI and AD Patients</h3>
+					<small>Alireza Fathian | 
+					<a href="mailto:fathian2009@gmail.com" style="text-decoration: none" target="_blank"><i class="fas fa-envelope"></i></a>
+					<a href="https://alirezafathian.github.io" target="_blank"><i class="fas fa-globe"></i></a>
+					<br><br><small>November, 2020</small>
+					</small>
+
+				</section>
+<!--===================================1============================================-->
+				<section  style="text-align: left;" data-menu-title="1. Introduction">
+                		<h2>1. Introduction</h2>
+                		<section data-menu-title="1. Introduction">
+                		<!--In this study, we have explored the effects of <u>Alzheimer’s Disease</u> (AD), <u>Early Mild Cognitive Impairment</u> (EMCI), and <u>Late Mild Cognitive Impairment</u> (LMCI) on functional brain connectivity.<br><br> By creating networks-->
+				In this study, we have investigated the changes in functional brain connectivity of <u>Alzheimer’s Disease</u> (AD), <u>Early Mild Cognitive Impairment</u> (EMCI), and <u>Late Mild Cognitive Impairment</u> (LMCI).
+				<br><br>
+				By creating networks that model the functional brain connectivity of different subjects, we have shown that there are topological differences between subjects of each group.
+				</section>
+            			</section>
+<!--===================================2============================================-->
+				<section style="text-align: left;" data-menu-title="2. Methods">
+					<h2>2. Methods</h2>
+					<section style="text-align: left;" data-menu-title="2. Methods"></section>
+<!--===================================2.1============================================-->
+					<section style="text-align: left;" data-menu-title="2.1. Subjects">
+						<h3>2.1. Subjects</h3>
+						<!--<section style="text-align: left;" data-menu-title="2.1. Subjects"></section>-->
+						<p>The rs-fMRI and T1w images of 92 subjects from <a href="http://adni.loni.usc.edu/" target="_blank">ADNI database</a> were analyzed in this study.</p>
+						<small>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>CN</th>
+									<th>EMCI</th>
+									<th>LMCI</th>
+									<th>AD</th>
+									<th>ALL</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sample Size</td>
+									<td>23<br><small>08 M<br>15 F</small></td>
+									<td>23<br><small>12 M<br>11 F</small></td>
+									<td>23<br><small>10 M<br>13 F</small></td>
+									<td>23<br><small>11 M<br>12 F</small></td>
+									<td>92<br><small>41 M<br>51 F</small></td>
+								</tr>
+								<tr>
+									<td>Age <br><small>(Mean±SD)</small></td>
+									<td>75.82±9.44</td>
+									<td>75.29±6.36</td>
+									<td>72.26±7.05</td>
+									<td>77.75±3.75</td>
+									<td>74.78±7.11</td>
+								</tr>
+							</tbody>
+						</table>
+						</small>
+					</section>
+<!--===================================2.2============================================-->
+					<section style="text-align: left;" data-menu-title="2.2 Preprocessing">
+						<h3>2.2 Preprocessing</h3>
+						<p>Preprocessing data was done using <a href=https://fmriprep.org/en/stable/ target="_blank">fMRIPrep</a>.
+						fMRIPrep is a fMRI data preprocessing pipeline that performs basic processing steps on raw images. Including:</p>
+					<img src="ref/img/solarized/methods/fmriprep.png" alt="fmriprep.png" style="height: 200px; margin-left: 10px; background: transparent;">
+
+					</section>
+<!--===================================2.3============================================-->
+					<section style="text-align: left;" data-menu-title="2.3. Denoising">
+						<h3>2.3. Denoising</h3>
+						<p>A selection of nuisance variables generated by fMRIPrep were regressed out of the data. These variables are:</p>
+						<ul  style="padding-left: 50px;">
+							<li>6 motion estimates</li>
+							<li>Mean signal in WM, Mean signal in CSF</li>
+							<li>Global signal regression</li>
+						</ul>
+						<br>
+						<p>In addition to that, the derivatives, quadratic terms, and squares of derivatives of these variables were also regressed out.</p>
+					</section>
+<!--===================================2.4============================================-->
+					<section style="text-align: left;" data-menu-title="2.4. Parcellation">
+						<h3>2.4. Parcellation</h3>
+						<p>In this step, the brain were parcellated into 360 regions by the <u>HCP-MMP parcellation</u>. The time series corresponding to each region were computed as the mean of time series of voxels within that region.</p> 
+					</section>
+					<section style="text-align: left;" data-menu-title="2.2 Preprocessing">
+						<h3>2.4. Parcellation</h3>
+						<!--<iframe src="/ref/3d/7roi_nodes.html" style="width:100%; height:450px;" scrolling="yes" seamless></iframe>-->
+						<img src="ref/img/solarized/methods/7roi_nodes.png" alt="7roi_nodes.png" style="height: 240px;float:left; background: transparent;">
+						<small>
+						<table>
+								<tbody>
+								<tr>
+									<td>Visual <span style="color: rgb(127,24,25)"><i class="fas fa-circle"></i></span></td>
+									<td>Somatomotor <span style="color: rgb(233,89,36)"><i class="fas fa-circle"></i></span></td>
+									<td>Limbic <span style="color: rgb(60,194,219)"><i class="fas fa-circle"></i></span></td>
+									<td>Default <span style="color: rgb(37,33,96)"><i class="fas fa-circle"></i></span></td>
+								</tr>
+								<tr>
+									<td>DorsalAttention <span style="color: rgb(230,224,28)"><i class="fas fa-circle"></i></span></td>
+									<td>VentralAttention <span style="color: rgb(137,201,122)"><i class="fas fa-circle"></i></span></td>
+									<td>Frontoparietal <span style="color: rgb(60,84,164)"><i class="fas fa-circle"></i></span></td>
+								</tr>
+							</tbody>
+						</table>
+						</small>
+
+
+					</section>
+<!--===================================2.4============================================-->
+					<section style="text-align: left;" data-menu-title="2.5. Correlation Matrix">
+						<h3>2.5. Correlation Matrix</h3>
+						The correlation among time series corresponding to different brain regions were computed with two different methods, <u>Pearson's correlation coefficient</u> and <u>GLASSO</u>. These correlations then were used to create undirected networks of functional connectivity.
+					<small><img src="ref/img/solarized/methods/correlation.png" alt="correlation.png" style="height: 240px;float:left; background: transparent;"><br>The element within <span style="color: rgb(208,49,124)"><b><i class="far fa-square"></i></b></span> represents the correlation between nodes $i$ and $j$.</small>
+					</section>
+<!--===================================2.5============================================-->
+					<section style="text-align: left;" data-menu-title="2.6. Adjacency Matrix">
+						<h3>2.6. Adjacency Matrix</h3>
+						Adjacency matrices were created by thresholding the correlation matrices. we have choosed the thresholding values that maximizes the global cost efficiency (GCE).
+						<small>
+						\begin{aligned}
+						Threshold &amp; = \underset{-1 \leq t\leq 1}{\mathrm{argmax}}(GCE(t)) = \underset{-1 \leq t\leq 1}{\mathrm{argmax}}(E(t) - PSW(t))
+						\end{aligned}
+						\begin{aligned}
+						E(t) &amp; = \frac{1}{n}\sum_{i\in N}^{}\frac{\sum_{j\in N,j\neq i}^{ }(\frac{1}{d_{ij}})}{n-1}, PSW(t) = \frac{\sum_{i\in W,i\geq t}^{}i}{\sum_{j\in W}^{}j}
+						\end{aligned}
+						<p>where $E$ is the global efficiency, $PSW$ is the proportion of the strong weights, $N$ is the set of all nodes, $n$ is the number of nodes, $d_{ij}$ is the shortest path length between nodes $i$ and $j$, and $W$ is the set of all weights</p>
+						</small>
+					</section>
+<!--===================================2.7============================================-->
+					<section style="text-align: left;" data-menu-title="2.7. Network Measures">
+						<h3>2.7. Network Measures</h3>
+						<p>For each network 10 local and 14 global network measures were computed:</p>
+						
+						<ul  style="padding-left: 50px;">
+							<li><b>Local Measures:</b></li>
+							<small>Density, Average Shortest Path Length, Transitivity, Average Clustering, Local Efficiency, Global Efficiency, Pearson Correlation, Degree Assortativity Coefficient, Diameter, Radius.</small>
+							<li><b>Global Measures:</b></li>
+							<small>Degree, Eccentricity, Betweenness,  Communicability Betweenness, Eigenvector, Katz, Closeness, Current Flow Closeness, Load, Clustering Coefficient, Pagerank, Subgraph, Harmonic, Strength.</small>
+						</ul>
+					</section>
+					<section style="text-align: left;" data-menu-title="2.7. Network Measures: Clustering and Betweennes">
+						<h3>2.7. Network Measures</h3>
+						<ul style="padding-left: 50px;">
+						<li><b>Clustering</b></li>
+						<p>Clustering measures the tendency of neighbors of a node to be also neighbors.
+						<img src="ref/img/solarized/methods/clustering.png" alt="clustering.png" style="height: 70px; margin-left: 10px;float:right; background: transparent;">
+						<li><b>Betweenness</b></li>
+						Measure of the influence of a vertex over the flow of information between every pair of vertices.	
+						<img src="ref/img/solarized/methods/betweennes.png" alt="betweennes.png" style="height: 130px; margin-left: 10px;float:right; background: transparent;">					
+					</p></ul>
+					</section>
+<!--===================================2.8============================================-->
+					<section style="text-align: left;" data-menu-title="2.8. Mean Network">
+						<h3>2.8. Mean Network</h3>
+						<p>For each subject in a group the mean network were computed as the voxel-wise mean of all subjects within that group.</p>
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="2.8. Mean Network: CN">
+						<h3>2.8. Mean Network</h3>
+						<img src="ref/img/solarized/mean/cn.png" alt="cn.png" style=" background: transparent;">
+						<p style="text-align:center"> <span style="color: rgb(208,49,124)"><b>CN</b></span> <a href="#/2/12">EMCI</a> <a href="#/2/13">LMCI</a> <a href="#/2/14">AD</a> </p>
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="2.8. Mean Network: EMCI">
+						<h3>2.8. Mean Network</h3>
+						<img src="ref/img/solarized/mean/emci.png" alt="emci.png" style=" background: transparent;">
+						<p style="text-align:center"> <a href="#/2/11">CN</a> <span style="color: rgb(208,49,124)"><b>EMCI</b></span> <a href="#/2/13">LMCI</a> <a href="#/2/14">AD</a> </p>
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="2.8. Mean Network: LMCI">
+						<h3>2.8. Mean Network</h3>
+						<img src="ref/img/solarized/mean/lmci.png" alt="lmci.png" style=" background: transparent;">			
+						<p style="text-align:center"> <a href="#/2/11">CN</a> <a href="#/2/12">EMCI</a> <span style="color: rgb(208,49,124)"><b>LMCI</b></span> <a href="#/2/14">AD</a> </p>
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="2.8. Mean Network: AD">
+						<h3>2.8. Mean Network</h3>
+						<img src="ref/img/solarized/mean/ad.png" alt="ad.png" style=" background: transparent;">
+						<p style="text-align:center"> <a href="#/2/11">CN</a> <a href="#/2/12">EMCI</a> <a href="#/2/13">LMCI</a> <span style="color: rgb(208,49,124)"><b>AD</b></span></p>
+					</section>
+				</section>
+<!--===================================3============================================-->		
+				<section style="text-align: left;" data-menu-title="3. Results">
+					<h2>3. Results</h2>
+					<section style="text-align: left;" data-menu-title="3. Results"></section>
+<!--===================================3.1============================================-->
+					<section style="text-align: left;" data-menu-title="3.1 Pearson Correlation Coefficient Among Mean Networks">
+						<h3>3.1 Pearson Correlation Coefficient Among Mean Networks</h3>
+						<img src="ref/img/solarized/corr_between_net/mean-mean.png" alt="mean-mean.png" style="height: 400px; background: transparent;">
+						</section>
+						<section style="text-align: left;" data-menu-title="3.1 Pearson Correlation Coefficient Among Mean Networks">
+						<h3>3.1 Pearson Correlation Coefficient Among Mean Networks</h3>
+						<img src="ref/img/solarized/corr_between_net/mean-sub-sub.png" alt="mean-mean.png" style="height: 420px;float:left;  background: transparent;"><br>
+						<img src="ref/img/solarized/corr_between_net/mean-sub-sep.png" alt="mean-mean.png" style="height: 350px; background: transparent;">	
+						<img src="ref/img/solarized/corr_between_net/sd-sub-sep.png" alt="mean-mean.png" style="height: 350px; background: transparent;">
+					</section>
+<!--===================================3.2============================================-->
+					<section style="text-align: left;" data-menu-title="3.2 Analyzing Measures: Mean and SD">
+						<h3>3.2 Analyzing Measures: Global Measures of Mean Networks</h3>
+						<img src="ref/img/solarized/measures/mean/global.png" alt="ad.png" style=" background: transparent;">	
+					</section>
+					<section style="text-align: left;" data-menu-title="3.2 Analyzing Measures: Mean and SD">
+						<h3>3.2 Analyzing Measures: local Measures of Mean Networks</h3>
+						<img src="ref/img/solarized/measures/mean/local.png" alt="ad.png" style=" background: transparent;">	
+					</section>
+					<section style="text-align: left;" data-menu-title="3.2 Analyzing Measures: Mean and SD">
+						<h3>3.2 Analyzing Measures: Histogram of Strength</h3>
+						<img src="ref/img/solarized/measures/hist/strength.png" alt="ad.png" style=" background: transparent;">	
+					</section>
+<!--===================================3.3============================================-->
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.3 Analyzing Measures: Relationship Between Groups Based on Measures">
+						<h3>3.3 Analyzing Measures: Relationship Between Groups Based on Measures</h3>
+					
+						<img src="ref/img/solarized/measures/groups_relations/strength.png" alt="strength.png" style=" background: transparent;">
+						<p style="text-align:center"> <span style="color: rgb(208,49,124)"><b>Strength</b></span> <a href="#/3/7">Clustering</a> <a href="#/3/8">Betweenness</a> <a href="#/3/9">Closeness</a> </p>	
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.3 Analyzing Measures: Relationship Between Groups Based on Measures">
+						<h3>3.3 Analyzing Measures: Relationship Between Groups Based on Measures</h3>
+					
+						<img src="ref/img/solarized/measures/groups_relations/clustering.png" alt="clustering.png" style=" background: transparent;">
+						<p style="text-align:center"> <a href="#/3/6">Strength</a> <span style="color: rgb(208,49,124)"><b>Clustering</b></span> <a href="#/3/8">Betweenness</a> <a href="#/3/9">Closeness</a> </p>				
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.3 Analyzing Measures: Relationship Between Groups Based on Measures">
+						<h3>3.3 Analyzing Measures: Relationship Between Groups Based on Measures</h3>
+					
+						<img src="ref/img/solarized/measures/groups_relations/betweenness.png" alt="betweenness.png" style=" background: transparent;">
+						<p style="text-align:center"> <a href="#/3/6">Strength</a> <a href="#/3/7">Clustering</a> <span style="color: rgb(208,49,124)"><b>Betweenness</b></span> <a href="#/3/9">Closeness</a> </p>		
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.3 Analyzing Measures: Relationship Between Groups Based on Measures">
+						<h3>3.3 Analyzing Measures: Relationship Between Groups Based on Measures</h3>
+					
+						<img src="ref/img/solarized/measures/groups_relations/closeness.png" alt="ad.png" style=" background: transparent;">
+						<p style="text-align:center"> <a href="#/3/6">Strength</a> <a href="#/3/7">Clustering</a> <a href="#/3/8">Betweenness</a> <span style="color: rgb(208,49,124)"><b>Closeness</b></span></p>
+					</section>
+<!--===================================3.4============================================-->
+					<section style="text-align: left;" data-menu-title="3.4 Symmetric Links">
+						<h3>3.4 Symmetric Links</h3>
+						<p>The mean of the correlation coefficients of pairs of nodes that are symmetrical to each other.</p>
+					<small><img src="ref/img/solarized/symmetric/symmetric.png" alt="symmetric.png" style="height: 300px;float:left; background: transparent;"><table>
+							<thead>
+
+								<tr>
+									<th style="padding: 5px 5px 5px 30px;"><br><br>Group</th>
+									<th style="padding: 5px 5px 5px 20px;"><br><br>Mean</th>
+									<th style="padding: 5px 5px 5px 20px;"><br><br>SD</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">CN</td>
+									<td style="padding: 5px 5px 5px 20px;">0.708</td>
+									<td style="padding: 5px 5px 5px 20px;">0.060</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">EMCI</td>
+									<td style="padding: 5px 5px 5px 20px;">0.696</td>
+									<td style="padding: 5px 5px 5px 20px;">0.073</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">LMCI</td>
+									<td style="padding: 5px 5px 5px 20px;">0.613</td>
+									<td style="padding: 5px 5px 5px 20px;">0.148</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">AD</td>
+									<td style="padding: 5px 5px 5px 20px;">0.533</td>
+									<td style="padding: 5px 5px 5px 20px;">0.154</td>
+								</tr>
+							</tbody>
+						</table></small>
+					</section>
+<!--===================================3.5============================================-->
+					<section style="text-align: left;" data-menu-title="3.5 Long and Short Links">
+						<h3>3.5 Long and Short Links</h3>
+						<p>We have classified links as short and long links based on the spatial location of its nodes on the brain.</p>
+						<small><img src="ref/img/solarized/longshort/combf.png" alt="longshort.png" style="height: 350px;float:left; background: transparent;"><table>
+							<thead>
+								<tr>
+									<th style="padding: 5px 5px 5px 30px;"></th>
+									<th colspan="2" style="padding: 5px 5px 5px 50px;">Short Links</th>
+									<th colspan="2" style="padding: 5px 5px 5px 20px;">Long Links</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<th style="padding: 5px 5px 5px 20px;"><br><br>Group</th>
+									<th style="padding: 5px 5px 5px 60px;"><br><br>Mean</th>
+									<th style="padding: 5px 5px 5px 20px;"><br><br>SD</th>
+									<th style="padding: 5px 5px 5px 20px;"><br><br>Mean</th>
+									<th style="padding: 5px 5px 5px 20px;"><br><br>SD</th>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">CN</td>
+									<td style="padding: 5px 5px 5px 60px;">1.128</td>
+									<td style="padding: 5px 5px 5px 20px;">1.896</td>
+									<td style="padding: 5px 5px 5px 20px;">0.441</td>
+									<td style="padding: 5px 5px 5px 20px;">1.309</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">EMCI</td>
+									<td style="padding: 5px 5px 5px 60px;">1.114</td>
+									<td style="padding: 5px 5px 5px 20px;">1.950</td>
+									<td style="padding: 5px 5px 5px 20px;">0.454</td>
+									<td style="padding: 5px 5px 5px 20px;">1.360</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">LMCI</td>
+									<td style="padding: 5px 5px 5px 60px;">1.114</td>
+									<td style="padding: 5px 5px 5px 20px;">1.915</td>
+									<td style="padding: 5px 5px 5px 20px;">0.455</td>
+									<td style="padding: 5px 5px 5px 20px;">1.340</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">AD</td>
+									<td style="padding: 5px 5px 5px 60px;">1.065</td>
+									<td style="padding: 5px 5px 5px 20px;">1.910</td>
+									<td style="padding: 5px 5px 5px 20px;">0.501</td>
+									<td style="padding: 5px 5px 5px 20px;">1.403</td>
+								</tr>
+							</tbody>
+						</table></small>
+					</section>
+<!--===================================3.6============================================-->
+					<section style="text-align: left;" data-menu-title="3.6 Assortativity">
+						<h3>3.6 Assortativity</h3>
+						<p>The tendency of nodes to connect to other nodes with similar degree.</p>
+							<b>Measuring Assortativity:</b>	
+							<small>The average nearest neighbors degree of a vertex $i_{k}$:
+							\begin{aligned}
+							k_{nn,i} &amp; = \frac{1}{k_{i}}\sum_{j\in V(i)}^{}k_{j}
+							\end{aligned}
+							The average degree of the nearest neighbors, $k_{nn}(k)$, for vertices of degree $k$:
+							\begin{aligned}
+							k_{nn}(k) &amp; = \frac{1}{N_{k}}\sum_{i/k_{i}=k}^{}k_{nn,i}
+							\end{aligned}
+							Where $k_{i}$ is the degree of node $i$, $V(i)$ is the set of neighbours of node $i$, and $N_{k}$ is the number of nodes with degree $k$.</small>
+					</section>
+					<section style="text-align: left;" data-menu-title="3.6 Assortativity">
+						<h3>3.6 Assortativity</h3>
+						<small><img src="ref/img/solarized/assortativity/assortativity.png" alt="assortativity.png" style="height: 350px;float:left; background: transparent;"><table>
+							<thead>
+								<tr>
+									<th><br><br><br>Group</th>
+									<th><br><br><br>Pearson assortativity coefficient</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>CN</td>
+									<td>0.708</td>
+								</tr>
+								<tr>
+									<td>EMCI</td>
+									<td>0.696</td>
+								</tr>
+								<tr>
+									<td>LMCI</td>
+									<td>0.613</td>
+								</tr>
+								<tr>
+									<td>AD</td>
+									<td>0.533</td>
+								</tr>
+							</tbody>
+						</table></small>
+					</section>
+<!--===================================3.7============================================-->
+					<section style="text-align: left;" data-menu-title="3.7 CL(k)-Knn Plot">
+						<h3>3.7 CL(k)-Knn Plot</h3>
+						<small><img src="ref/img/solarized/knn_clk/knn_clk.png" alt="knn_clk.png" style="height: 350px;float:left; background: transparent;"><table>
+							<thead>
+								<tr>
+									<th><br><br><br>Group</th>
+									<th><br><br><br>Slope of the fitted line</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>CN</td>
+									<td>0.00723</td>
+								</tr>
+								<tr>
+									<td>EMCI</td>
+									<td>0.00726</td>
+								</tr>
+								<tr>
+									<td>LMCI</td>
+									<td>0.00729</td>
+								</tr>
+								<tr>
+									<td>AD</td>
+									<td>-0.00080</td>
+								</tr>
+							</tbody>
+						</table></small>
+					</section>
+<!--===================================3.8============================================-->
+
+					<section style="text-align: left;" data-menu-title="3.8 Rich-Club">
+						<h3>3.8 Rich-Club</h3>
+						Rich-club measures the tendency of high degree nodes, to be connected to each other, forming subgraphs more easily than low degree nodes.
+						<small>
+						\begin{aligned}
+						\phi(k) = \frac{2 E_{>k}}{N_{>k}(N_{>k}-1)}, \rho_{ran}(k)=\frac{\phi(k)}{\phi_{ran}(k)}, \scriptscriptstyle where
+						\begin{gather}
+						    E_{>k}\, is\, the\, number\, of\, edges\, among\, the\, N>k\, nodes \\ 
+						    N_{>k}\, is\, the\, number\, of\, vertices\, with\, degree\, larger\, than\, k
+						\end{gather} 
+						\end{aligned}</small>
+
+						<img src="ref/img/solarized/rich_club/rich_club_comb.png" alt="rich_club_comb.png" style="height: 240px;float:left; background: transparent;">
+					</section>
+<!--===================================3.9============================================-->
+					<section style="text-align: left;" data-menu-title="3.9 Smallworld Property">
+						<h3>3.9 Small-world Property</h3>
+						<p>A network has a small-world property if it is possible to go from one vertex to any other in the network passing through a very small number of intermediate vertices.</p>
+						<small><img src="ref/img/solarized/small-worldness/small-worldness.png" alt="small-worldness.png" style="height: 240px;float:left; background: transparent;"><br>$M(l)$ the average number of nodes within a distance less than or equal to  from any given vertex.<br>In small-world networks this quantity follows an exponential or faster increase.</small>
+					</section>
+<!--===================================3.10============================================-->
+					<section style="text-align: left;" data-menu-title="3.10 Classifying Nodes">
+						<h3>3.10 Classifying Nodes</h3>
+						<p>We have classified nodes into 7 modules based on the 7-ROI parcellation by Yeo et al., (2011).</p>
+						<img src="ref/img/solarized/7roi/7roi.png" alt="7roi.png" style="height: 400px;float:left; background: transparent;">
+						<small><table>
+							<thead>
+								<tr>
+									<th style="padding: 5px 5px 5px 30px;"></th>
+									<th colspan="2" style="padding: 5px 5px 5px 50px;">weights of <br>inter-ROI links</th>
+									<th colspan="2" style="padding: 5px 5px 5px 20px;">weights of <br>intera-ROI links</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								<th style="padding: 5px 5px 5px 20px;"><br><br>Group</th>
+									<th style="padding: 5px 5px 5px 60px;"><br><br>Mean</th>
+									<th style="padding: 5px 5px 5px 20px;"><br><br>SD</th>
+									<th style="padding: 5px 5px 5px 20px;"><br><br>Mean</th>
+									<th style="padding: 5px 5px 5px 20px;"><br><br>SD</th>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">CN</td>
+									<td style="padding: 5px 5px 5px 60px;">0.197</td>
+									<td style="padding: 5px 5px 5px 20px;">0.171</td>
+									<td style="padding: 5px 5px 5px 20px;">0.003</td>
+									<td style="padding: 5px 5px 5px 20px;">0.120</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">EMCI</td>
+									<td style="padding: 5px 5px 5px 60px;">0.182</td>
+									<td style="padding: 5px 5px 5px 20px;">0.155</td>
+									<td style="padding: 5px 5px 5px 20px;">0.007</td>
+									<td style="padding: 5px 5px 5px 20px;">0.107</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">LMCI</td>
+									<td style="padding: 5px 5px 5px 60px;">0.173</td>
+									<td style="padding: 5px 5px 5px 20px;">0.156</td>
+									<td style="padding: 5px 5px 5px 20px;">0.012</td>
+									<td style="padding: 5px 5px 5px 20px;">0.114</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">AD</td>
+									<td style="padding: 5px 5px 5px 60px;">0.153</td>
+									<td style="padding: 5px 5px 5px 20px;">0.166</td>
+									<td style="padding: 5px 5px 5px 20px;">0.014</td>
+									<td style="padding: 5px 5px 5px 20px;">0.128</td>
+								</tr>
+							</tbody>
+						</table></small>
+					</section>
+					<section data-transition="none" style="text-align: left;" data-menu-title="3.10 Classifying Nodes: CN">
+						<h3>3.10 Classifying Nodes</h3>
+						<center><img src="ref/img/solarized/7roi/meanM/cn.png" alt="cn.png" style=" height: 450px; background: transparent;">
+						<br><span style="color: rgb(208,49,124)"><b>CN</b></span> <a href="#/3/19">EMCI</a> <a href="#/3/20">LMCI</a> <a href="#/3/21">AD</a> </center>
+					</section>
+					<section data-transition="none" style="text-align: left;" data-menu-title="3.10 Classifying Nodes: EMCI">
+						<h3>3.10 Classifying Nodes</h3>
+						<center><img src="ref/img/solarized/7roi/meanM/emci.png" alt="emci.png" style="height: 450px; background: transparent;">
+						<br> <a href="#/3/18">CN</a> <span style="color: rgb(208,49,124)"><b>EMCI</b></span> <a href="#/3/20">LMCI</a> <a href="#/3/21">AD</a></center>
+					</section>
+					<section data-transition="none" style="text-align: left;" data-menu-title="3.10 Classifying Nodes: LMCI">
+						<h3>3.10 Classifying Nodes</h3>
+						<center><img src="ref/img/solarized/7roi/meanM/lmci.png" alt="lmci.png" style="height: 450px; background: transparent;">			
+						<br> <a href="#/3/18">CN</a> <a href="#/3/19">EMCI</a> <span style="color: rgb(208,49,124)"><b>LMCI</b></span> <a href="#/3/21">AD</a></center>
+					</section>
+					<section data-transition="none" style="text-align: left;" data-menu-title="3.10 Classifying Nodes: AD">
+						<h3>3.10 Classifying Nodes</h3>
+						<center><img src="ref/img/solarized/7roi/meanM/ad.png" alt="ad.png" style="height: 450px; background: transparent;">
+						<br> <a href="#/3/18">CN</a> <a href="#/3/19">EMCI</a> <a href="#/3/20">LMCI</a> <span style="color: rgb(208,49,124)"><b>AD</b></span></center>
+					</section>
+<!--===================================3.11============================================-->
+					<section style="text-align: left;" data-menu-title="3.11 Hubs">
+						<h3>3.11 Hubs</h3>
+						<p>Given a scoring system for nodes, network hubs are defined as nodes with score larger than the mean + the standard deviation of the scores of each node in the network.</p>
+						<p>Here we applied 3 different scores: Strength, Betweenness, and Clustering.</p>
+						<p>The network hubs are then the nodes which are hub based on one of these scores.</p>	
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.11 Hubs in the Mean Networks: CN">
+						<h3>3.11 Hubs in the Mean Networks</h3>
+						<img src="ref/img/solarized/hubs/all/cn.png" alt="cn.png" style=" height: 270px;float:left; background: transparent;">
+						<img src="ref/img/solarized/7roi/7roi1.png" alt="7roi.png" style=" height: 250px; background: transparent;">
+						<center><br><span style="color: rgb(208,49,124)"><b>CN</b></span> <a href="#/3/24">EMCI</a> <a href="#/3/25">LMCI</a> <a href="#/3/26">AD</a></center>
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.11 Hubs in the Mean Networks: EMCI">
+						<h3>3.11 Hubs in the Mean Networks</h3>
+						<img src="ref/img/solarized/hubs/all/emci.png" alt="emci.png" style="height: 270px;float:left; background: transparent;">
+						<img src="ref/img/solarized/7roi/7roi1.png" alt="7roi.png" style=" height: 250px; background: transparent;">
+						<center><br> <a href="#/3/23">CN</a> <span style="color: rgb(208,49,124)"><b>EMCI</b></span> <a href="#/3/25">LMCI</a> <a href="#/3/26">AD</a></center>
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.11 Hubs in the Mean Networks: LMCI">
+						<h3>3.11 Hubs in the Mean Networks</h3>
+						<img src="ref/img/solarized/hubs/all/lmci.png" alt="lmci.png" style="height: 270px;float:left; background: transparent;">
+						<img src="ref/img/solarized/7roi/7roi1.png" alt="7roi.png" style=" height: 250px; background: transparent;">			
+						<center><br> <a href="#/3/23">CN</a> <a href="#/3/24">EMCI</a> <span style="color: rgb(208,49,124)"><b>LMCI</b></span> <a href="#/3/26">AD</a></center>
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.11 Hubs in the Mean Networks: AD">
+						<h3>3.11 Hubs in the Mean Networks</h3>
+						<img src="ref/img/solarized/hubs/all/ad.png" alt="7roi.png" style="height: 270px;float:left; background: transparent;">
+						<img src="ref/img/solarized/7roi/7roi1.png" alt="cn.png" style=" height: 250px; background: transparent;">
+						<center><br> <a href="#/3/23">CN</a> <a href="#/3/24">EMCI</a> <a href="#/3/25">LMCI</a> <span style="color: rgb(208,49,124)"><b>AD</b></span></center>
+					</section>
+					<section style="text-align: left;" data-menu-title="3.11 Hubs in the Mean Networks">
+						<h3>3.11 Hubs in the Mean Networks</h3>
+						<img src="ref/img/solarized/hubs/all/freq.png" alt="7roi.png" style="height: 450px;float:left; background: transparent;">
+						<small><table>
+							<tbody>
+								<tr>
+								<th style="padding: 5px 5px 5px 20px;"><br><br>Group</th>
+									<th style="padding: 5px 5px 5px 60px;"><br><br>Number<br>of Hubs</th>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">CN</td>
+									<td style="padding: 5px 5px 5px 60px;">43</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">EMCI</td>
+									<td style="padding: 5px 5px 5px 60px;">31</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">LMCI</td>
+									<td style="padding: 5px 5px 5px 60px;">43</td>
+								</tr>
+								<tr>
+									<td style="padding: 5px 5px 5px 30px;">AD</td>
+									<td style="padding: 5px 5px 5px 60px;">39</td>
+								</tr>
+							</tbody>
+						</table></small>
+					</section>
+<!--===================================3.12============================================-->
+					<section style="text-align: left;" data-menu-title="3.12 Activated Links in Each Group">
+						<h3>3.12 Activated Links in Each Group</h3>
+						<img src="ref/img/solarized/activated/pipe.png" alt="pipe.png" style="height: 350px;float:left; background: transparent;">
+							
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.12 Activated Links in Each Group">
+						<h3>3.12 Activated Links in Each Group</h3>
+						<img src="ref/img/solarized/activated/link-cn-others/emci.png" alt="emci.png" style="height: 520px;float:left; background: transparent;">
+						<p style="text-align:center"><br><br><br><br> <span style="color: rgb(208,49,124)"><b>EMCI</b></span><br> <a href="#/3/30">LMCI</a><br> <a href="#/3/31">AD</a> </p>			
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.12 Activated Links in Each Group">
+						<h3>3.12 Activated Links in Each Group</h3>
+						<img src="ref/img/solarized/activated/link-cn-others/lmci.png" alt="lmci.png" style="height: 520px;float:left; background: transparent;">
+						<p style="text-align:center"><br><br><br><br> <a href="#/3/29">EMCI</a><br> <span style="color: rgb(208,49,124)"><b>LMCI</b></span><br><a href="#/3/31">AD</a> </p>			
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.12 Activated Links in Each Group">
+						<h3>3.12 Activated Links in Each Group</h3>
+						<img src="ref/img/solarized/activated/link-cn-others/ad.png" alt="ad.png" style="height: 520px;float:left; background: transparent;">
+						<p style="text-align:center"><br><br><br><br> <a href="#/3/29">EMCI</a><br> <a href="#/3/30">LMCI</a><br> <span style="color: rgb(208,49,124)"><b>AD</b></span> </p>			
+					</section>
+<!--===================================3.13============================================-->
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.13 Activated ROIs in Each Group">
+						<h3>3.13 Activated ROIs in Each Group</h3>
+						<img src="ref/img/solarized/activated/node-cn-others/emci.png" alt="emci.png" style="height: 260px;float:left; background: transparent;">
+						<p style="text-align:center"><br><br> <span style="color: rgb(208,49,124)"><b>EMCI</b></span><br> <a href="#/3/33">LMCI</a><br> <a href="#/3/34">AD</a> </p>
+						
+						<br><center><small><table>
+								<tbody>
+								<tr>
+									<td>CN <span style="color: rgb(255,0,0)"><i class="fas fa-circle"></i></span></td>
+									<td>Other Groups <span style="color: rgb(0,0,255)"><i class="fas fa-circle"></i></span></td>
+								</tr>
+							</tbody>
+						</table></small></center>			
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.13 Activated ROIs in Each Group">
+						<h3>3.13 Activated ROIs in Each Group</h3>
+						<img src="ref/img/solarized/activated/node-cn-others/lmci.png" alt="lmci.png" style="height: 260px;float:left; background: transparent;">
+						<p style="text-align:center"><br><br> <a href="#/3/32">EMCI</a><br> <span style="color: rgb(208,49,124)"><b>LMCI</b></span><br><a href="#/3/34">AD</a> </p>
+						
+						<br><center><small><table>
+								<tbody>
+								<tr>
+									<td>CN <span style="color: rgb(255,0,0)"><i class="fas fa-circle"></i></span></td>
+									<td>Other Groups <span style="color: rgb(0,0,255)"><i class="fas fa-circle"></i></span></td>
+								</tr>
+							</tbody>
+						</table></small></center>			
+					</section>
+					<section data-transition="fade" style="text-align: left;" data-menu-title="3.13 Activated ROIs in Each Group">
+						<h3>3.13 Activated ROIs in Each Group</h3>
+						<img src="ref/img/solarized/activated/node-cn-others/ad.png" alt="ad.png" style="height: 260px;float:left; background: transparent;">
+						<p style="text-align:center"><br><br> <a href="#/3/32">EMCI</a><br> <a href="#/3/33">LMCI</a><br> <span style="color: rgb(208,49,124)"><b>AD</b></span> </p>
+						
+						<br><center><small><table>
+								<tbody>
+								<tr>
+									<td>CN <span style="color: rgb(255,0,0)"><i class="fas fa-circle"></i></span></td>
+									<td>Other Groups <span style="color: rgb(0,0,255)"><i class="fas fa-circle"></i></span></td>
+								</tr>
+							</tbody>
+						</table></small></center>
+					</section>			
+					<section style="text-align: left;" data-menu-title="3.13 Activated ROIs in Each Group">
+						<h3>3.13 Activated ROIs in Each Group</h3>
+						<img src="ref/img/solarized/activated/node-cn-others/others-cn.png" alt="ad.png" style="height: 520px;float:left;margin:15px; background: transparent;">
+						<br>
+						<small><table>
+								<tbody>
+								<tr>
+									<td>EMCI <span style="color: rgb(255,0,0)"><i class="fas fa-circle"></i></span></td>
+								</tr>
+								<tr>
+									<td>LMCI <span style="color: rgb(0,0,255)"><i class="fas fa-circle"></i></span></td>
+								</tr>
+									<td>AD &nbsp&nbsp&nbsp<span style="color: rgb(0,255,0)"><i class="fas fa-circle"></i></span></td>
+								</tr>
+							</tbody>
+						</table></small>
+					</section>
+</section>
+<!--===================================3.14============================================-->
+				<section style="text-align: left;">
+					<h1>Thank You!</h1>
+				</section>
+<!--===================================3.14============================================-->
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="bower_components/reveal.js-menu/menu.js"></script>
+		<script>
+			
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'convex',
+				slideNumber: 'c/t',
+				//width: 960,
+				height: 800,
+				navigationMode: 'linear',
+				controlsBackArrows: 'visible',
+				controlsLayout: 'edges',
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealMath ],
+			        dependencies: [
+
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+					// TOC-Progress plugin
+					//{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
+				],
+				math: {
+				      mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				      config: 'TeX-AMS_HTML-full',
+				      // pass other options into `MathJax.Hub.Config()`
+				      TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+				menu: {
+					side: 'left',
+					numbers: false,
+					titleSelector: 'h1, h2, h3, h4, h5, h6',
+					hideMissingTitles: false,
+					markers: false,
+					custom: false,
+					themes: [
+					    { name: 'Black', theme: 'dist/theme/black.css' },
+					    { name: 'White', theme: 'dist/theme/white.css' },
+					    { name: 'League', theme: 'dist/theme/league.css' },
+					    { name: 'Sky', theme: 'dist/theme/sky.css' },
+					    { name: 'Beige', theme: 'dist/theme/beige.css' },
+					    { name: 'Simple', theme: 'dist/theme/simple.css' },
+					    { name: 'Serif', theme: 'dist/theme/serif.css' },
+					    { name: 'Blood', theme: 'dist/theme/blood.css' },
+					    { name: 'Night', theme: 'dist/theme/night.css' },
+					    { name: 'Moon', theme: 'dist/theme/moon.css' },
+					    { name: 'Solarized', theme: 'dist/theme/solarized.css' }
+					],
+					transitions: true,
+					openButton: true,
+					openSlideNumber: true,
+					keyboard: true
+				}
+
+	
+			});
+		</script>
+	</body>
+</html>

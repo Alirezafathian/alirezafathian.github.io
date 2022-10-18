@@ -1,0 +1,142 @@
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
+<aside class="logo">
+
+	{% assign link = '/' %}
+	<!-- {% assign prompt = 'About Me' %} -->
+
+	<a href="{{ link | prepend: site.baseurl | prepend: site.url }}">
+		<img src="{{ site.logo_url }}" class="logo-avatar">
+	</a>
+	<!-- <span class="logo-prompt code">{{ prompt }}</span> -->
+</aside>
+<div class="rotate">{{site.author_name}}</div>
+<head>
+<style>
+p {text-align: center;}
+</style>
+</head>
+<aside class="menu">
+
+	{% if page.url == '/about' or page.url == '/' or page.url == '' %}
+		<ul class="top-menu">
+			<li style="font-weight:bold;"> <a><u> About </u></a> </li>
+			{% assign link = '/cv' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}" target="_blank"><b> CV </b></a> </li>
+			{% assign link = '/publications' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Publications </b></a> </li>
+		</ul>
+		<ul class="bottom-menu">
+			{% assign link = '/projects' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Projects </b></a> </li>
+			{% assign link = '/talks' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Talks </b></a> </li>
+			{% assign link = '/contact' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Contact </b></a> </li>
+		</ul>
+	{% endif %}
+	{% if page.url == '/cv' %}
+		<ul class="top-menu">
+			{% assign link = '/about' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> About </b></a> </li>
+			<li style="font-weight:bold;"> <a><u> CV </u></a> </li>
+			{% assign link = '/publications' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Publications </b></a> </li>
+		</ul>
+		<ul class="bottom-menu">
+			{% assign link = '/projects' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Projects </b></a> </li>
+			{% assign link = '/talks' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Talks </b></a> </li>
+			{% assign link = '/contact' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Contact </b></a> </li>
+		</ul>
+	{% endif %}
+	{% if page.url == '/publications' %}
+		<ul class="top-menu">
+			{% assign link = '/about' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> About </b></a> </li>
+			{% assign link = '/cv' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}" target="_blank"><b> CV </b></a> </li>
+			<li style="font-weight:bold;"> <a><u> Publications </u></a> </li>
+		</ul>
+		<ul class="bottom-menu">
+			{% assign link = '/projects' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Projects </b></a> </li>
+			{% assign link = '/talks' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Talks </b></a> </li>
+			{% assign link = '/contact' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Contact </b></a> </li>
+		</ul>
+	{% endif %}
+	{% if page.url == '/projects' %}
+		<ul class="top-menu">
+			{% assign link = '/about' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> About </b></a> </li>
+			{% assign link = '/cv' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}" target="_blank"><b> CV </b></a> </li>
+			{% assign link = '/publications' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Publications </b></a> </li>
+		</ul>
+		<ul class="bottom-menu">
+			<li style="font-weight:bold;"> <a><u> Projects </u></a> </li>
+			{% assign link = '/talks' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Talks </b></a> </li>
+			{% assign link = '/contact' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Contact </b></a> </li>
+		</ul>
+	{% endif %}
+	{% if page.url == '/talks' %}
+		<ul class="top-menu">
+			{% assign link = '/about' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> About </b></a> </li>
+			{% assign link = '/cv' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}" target="_blank"><b> CV </b></a> </li>
+			{% assign link = '/publications' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Publications </b></a> </li>
+		</ul>
+		<ul class="bottom-menu">
+			{% assign link = '/projects' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Projects </b></a> </li>
+			<li style="font-weight:bold;"> <a><u> Talks </u></a> </li>
+			{% assign link = '/contact' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Contact </b></a> </li>
+		</ul>
+	{% endif %}
+	{% if page.url == '/contact' %}
+		<ul class="top-menu">
+			{% assign link = '/about' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> About </b></a> </li>
+			{% assign link = '/cv' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}" target="_blank"><b> CV </b></a> </li>
+			{% assign link = '/publications' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Publications </b></a> </li>
+		</ul>
+		<ul class="bottom-menu">
+			{% assign link = '/projects' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Projects </b></a> </li>
+			{% assign link = '/talks' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Talks </b></a> </li>
+			<li style="font-weight:bold;"> <a><u> Contact </u></a> </li>
+		</ul>
+		{% endif %}
+
+	{% if page.url != '/about' and page.url != '/' and page.url != '' and page.url != '/contact' and page.url != '/projects' and page.url !='/cv' and page.url !='/talks' and page.url !='/publications' %}
+		<ul class="top-menu">
+			{% assign link = '/about' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> About </b></a> </li>
+			{% assign link = '/cv' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}" target="_blank"><b> CV </b></a> </li>
+			{% assign link = '/publications' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Publications </b></a> </li>
+		</ul>
+		<ul class="bottom-menu">
+			{% assign link = '/projects' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Projects </b></a> </li>
+			{% assign link = '/talks' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Talks </b></a> </li>
+			{% assign link = '/contact' %}
+			<li> <a href="{{ link | prepend: site.baseurl | prepend: site.url }}"><b> Contact </b></a> </li>
+		</ul>
+		{% endif %}
+</aside>

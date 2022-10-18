@@ -1,0 +1,52 @@
+---
+title: Building phylogenetic tree from distance matrix
+type: projects
+date: 2018-12-01
+imageurl: /ref/projects/phylogenetic/fig1.png
+authors: Alireza Fathian
+---
+
+<html>
+<head>
+<style>
+.left {
+  text-align: left;
+  border: 3px solid blue;
+}
+</style>
+</head>
+<body>
+
+<div class="left">
+<img src="/ref/projects/phylogenetic/fig1.png" alt="phylogenetic">
+<div align="right"><a href="https://github.com/Alirezafathian/phylogenetic_tree" target="_blank">[Source Code]</a></div><br>
+<b>Scripts for building phylogenetic trees from a given distance matrix with neighbor joining method.</b><br>
+
+In <a href="https://github.com/Alirezafathian/phylogenetic_tree/blob/master/references/phylogenetic_tree.pdf">/references/phylogenetic_tree.pdf</a> you can find information about phylogenetic trees and neighbor joining method and see some examples of computing phylogenetic trees.<br><br>
+<b>Example:</b><br><br>
+
+<b>Input:</b><br><br>
+Distance Matrix<br><br>
+
+<b>&emsp;</b>[ <b>&emsp;</b> A<b>&nbsp;</b> B<b>&nbsp;</b> C<b>&nbsp;</b> D<b>&nbsp;</b> E<b>&nbsp;</b> F ]<br>
+<b>&emsp;</b>[ A 00 00 00 00 00 00]<br>
+<b>&emsp;</b>[ B 05 00 00 00 00 00]<br> 
+<b>&emsp;</b>[ C 04 07 00 00 00 00]<br> 
+<b>&emsp;</b>[ D 07 10 07 00 00 00]<br>
+<b>&emsp;</b>[ E 06 09 06 05 00 00]<br> 
+<b>&emsp;</b>[ F 08 11 08 09 08 00]<br><br> 
+
+<b>Outputs</b><br><br>
+1. Newick Format:<br><br>
+
+<b>&emsp;</b>[ [[['E',2], ['D',3]], [ ['C',2], [['B',4], ['A',1]]]], ['F',5] ]<br><br> 
+
+
+2. Phylogenetic Tree:<br><br>
+<img src="/ref/projects/phylogenetic/fig2.png" alt="phylogenetic">
+<br>
+
+
+</div>
+</body>
+</html>
