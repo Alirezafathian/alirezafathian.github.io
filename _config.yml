@@ -5,7 +5,7 @@ author_name:        "Alireza Fathian" # change this to your name
 logo_url:           https://avatars0.githubusercontent.com/u/49844776?s=400&u=3d9f7512e7989e9bffa26bb0b31cbe616d3cf2d0&v=4 # Get it from GitHub API: https://api.github.com/users/alirezafathian
 
 # Site Settings
-url:                https://fathian.xyz  # main url
+url:                https://alirezafathian.github.io  # main url
 baseurl:             #/the-plain-academic
 permalink:          /:title # Post permalink
 timezone:           America/Recife
